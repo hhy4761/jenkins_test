@@ -1,6 +1,13 @@
 pipeline{
     agent any
-
+    stage('github clone') {
+        steps {
+            script {
+                properties([pipelineTriggers([pollSCM('*****')])])
+            }
+            git branch: 'main', url: 'https://github.com/hhy4761/jenkins_test'
+        }
+    }
     envionment {
         imageName = "my-spring-boot"
         registryCredential = 'docker-hub'

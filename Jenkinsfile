@@ -12,7 +12,7 @@ pipeline {
       steps {
         sh '''chmod +x gradlew
 ./gradlew clean build
-ls -al ./build\''''
+ls -al ./build'''
       }
     }
 

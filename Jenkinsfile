@@ -16,5 +16,12 @@ ls -al ./build'''
       }
     }
 
+    stage('dockerizing') {
+      steps {
+        sh '''echo \'docker build start\'
+docker build . -t hhy4761/jenkins_test:latest'''
+      }
+    }
+
   }
 }

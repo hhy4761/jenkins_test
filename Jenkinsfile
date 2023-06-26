@@ -18,7 +18,10 @@ ls -al ./build'''
 
     stage('dockerizing') {
       steps {
-        sh 'echo \'docker build start\''
+        sh '''echo \'docker build start\'
+docker.withRegistry(\'hhy4761/jenkins_test\', \'docker-hub\') {
+app.push("${env.BUILD_NUMBER}")
+app.push("latest")'''
       }
     }
 

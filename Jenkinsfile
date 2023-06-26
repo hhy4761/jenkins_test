@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh '''
             echo Start dockerizing
-            docker build . -t hhy4761/jenkins_test
+            docker build . -t hhy4761/jenkins_test:latest
             '''
         }
       }
@@ -31,8 +31,12 @@ pipeline {
     stage('docker push') {
         steps{
             sh 'echo Start docker push'
-            withCredentials([string(credentialsId: 'docker-hub', usernameVariable: 'docker_credentials_user', passwordVariable: 'docker_credentials_pw')]) {
-                sh 'docker login -u $docker_credentials_user -p $docker_credentials_pw'
+            withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'docker_credentials_user', passwordVariable: 'docker_credentials_pw')]) {
+                sh '''
+                    docker login -u $docker_credentials_user -p $docker_credentials_pw
+                    docker push hhy4761/jenkins_test:latest
+                    '''
+
             }
         }
     }

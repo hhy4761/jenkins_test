@@ -18,16 +18,9 @@ ls -al ./build'''
 
     stage('dockerizing') {
       steps {
-        sh '''echo \'docker build start\'
-echo $DOCKERHUB_CREDENTIALS_ID
-docker login -u $DOCKERHUB_CREDENTIALS_ID
-docker build . -t hhy4761/jenkins_test:latest'''
+        sh 'echo \'docker build start\''
       }
     }
 
-  }
-  environment {
-    DOCKERHUB_CREDENTIALS_ID = 'hhy4761'
-    DOCKERHUB_CREDENTIAS_PW = 'qkqwnj4190'
   }
 }

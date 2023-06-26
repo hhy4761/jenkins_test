@@ -14,12 +14,11 @@ pipeline {
             echo Start build 
             chmod +x gradlew
             ./gradlew clean build
-            ls -al ./build
             '''
       }
     }
 
-    stage('dockerizing') {
+    stage('docker build') {
       steps {
         sh '''
             echo Start dockerizing
@@ -36,8 +35,13 @@ pipeline {
                     docker login -u $docker_credentials_user -p $docker_credentials_pw
                     docker push hhy4761/jenkins_test:latest
                     '''
-
             }
+        }
+    }
+    
+    stage('deploy') {
+        steps{
+
         }
     }
   }

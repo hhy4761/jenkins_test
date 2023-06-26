@@ -1,6 +1,5 @@
 version: '3.7'
 services:
-
   jenkins:
     image: jenkins/jenkins:lts-jdk11
     container_name: jenkins
@@ -15,4 +14,14 @@ services:
     ports:
       - 8080:8080
       - 50000:50000
+  spring:
+    container_name: spring-boot
+    restart: always
+    build:
+      context: spring-boot
+      dockerfile: dockerfile
+    ports:
+    - 8085: 8080
+    volumes:
+    - ./spring-boot:/deploy
 

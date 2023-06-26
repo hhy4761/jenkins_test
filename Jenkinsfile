@@ -27,5 +27,14 @@ pipeline {
             '''
         }
       }
+
+    stage('docker push') {
+        steps{
+            sh 'echo Start docker push'
+            withCredentials([string(credentialsId: 'docker-hub', variable: 'docker_credentials')]) {
+                sh 'docker login -u hhy4761 -p ${docker_credentials}'
+            }
+        }
     }
+  }
 }

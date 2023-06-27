@@ -14,6 +14,8 @@ services:
     ports:
       - 8080:8080
       - 50000:50000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   spring:
     container_name: spring-boot
     restart: always

@@ -16,13 +16,13 @@ services:
       - 50000:50000
     extra_hosts:
       - "host.docker.internal:host-gateway"
-  spring:
-    container_name: spring-boot
-    restart: always
-    build:
-      context: ./
-      dockerfile: dockerfile
-    ports:
-    - 8085:8080
-    volumes:
-    - ~/jenkins_home/workspace/jenkins_test_main/build/libs:/deploy
+  # spring:
+  #   container_name: spring-boot
+  #   restart: always
+  #   build:
+  #     context: ./
+  #     dockerfile: dockerfile
+  #   ports:
+  #   - 8085:8080
+  #   volumes:
+  #   - ~/jenkins_home/workspace/jenkins_test_main/build/libs:/deploy

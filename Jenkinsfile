@@ -25,7 +25,7 @@ pipeline {
             docker build . -t hhy4761/jenkins_test:latest
             '''
         }
-      }
+    }
 
     stage('docker push') {
         steps{
@@ -38,11 +38,6 @@ pipeline {
             }
         }
     }
-    
-    // stage('deploy') {
-    //     steps{
 
-    //     }
-    // }
   }
 }
